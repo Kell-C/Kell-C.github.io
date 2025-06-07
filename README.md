@@ -2,7 +2,7 @@
 
 **Um portfólio digital para organizar materiais didáticos, links úteis e mapas mentais sobre História.**  
 
-👉 **Link do site:** [coloque aqui a URL do seu site]  
+👉 **Link do site:** (https://kell-c.github.io/)
 
 ---
 
