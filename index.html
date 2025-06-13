@@ -3,206 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Políticas Educacionais no Brasil</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        /* Estilo da Tabela */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        /* Mapa Mental (simulado com divs) */
-        .mindmap {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0;
-        }
-        .node {
-            margin: 10px;
-            padding: 10px;
-            border: 2px solid #3498db;
-            border-radius: 5px;
-            background-color: #ecf0f1;
-            text-align: center;
-            width: 150px;
-        }
-        .children {
-            display: flex;
-            justify-content: center;
-        }
-        /* Gráfico de Árvore (simplificado) */
-        .tree {
-            margin: 20px 0;
-        }
-        .tree ul {
-            padding-left: 20px;
-            list-style-type: none;
-        }
-        .tree li {
-            margin: 10px 0;
-            position: relative;
-        }
-        .tree li::before {
-            content: "";
-            position: absolute;
-            left: -15px;
-            top: 10px;
-            border-left: 1px solid #ccc;
-            height: 100%;
-        }
-        .tree li::after {
-            content: "";
-            position: absolute;
-            left: -15px;
-            top: 10px;
-            border-top: 1px solid #ccc;
-            width: 15px;
-        }
-        .tree li:last-child::before {
-            height: 10px;
-        }
-    </style>
+    <title>Políticas Educacionais Brasileiras</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Políticas Educacionais no Brasil</h1>
-        <p>Análise de implementação, regulamentação e financiamento.</p>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-graduation-cap"></i> Políticas Educacionais no Brasil</h1>
+            <p>Análise das principais políticas públicas em implementação</p>
+        </div>
+    </header>
 
-        <!-- Mapa Mental Simplificado -->
-        <h2>Mapa Mental: Ciclo das Políticas Educacionais</h2>
-        <div class="mindmap">
-            <div>
-                <div class="node">Política Nacional</div>
-                <div class="children">
-                    <div>
-                        <div class="node">Planejamento</div>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#mapa-mental"><i class="fas fa-project-diagram"></i> Mapa Conceitual</a></li>
+                <li><a href="#politicas"><i class="fas fa-landmark"></i> Políticas em Destaque</a></li>
+                <li><a href="#indicadores"><i class="fas fa-chart-line"></i> Indicadores</a></li>
+                <li><a href="#desafios"><i class="fas fa-exclamation-triangle"></i> Desafios</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="mapa-mental">
+            <h2><i class="fas fa-project-diagram"></i> Mapa Conceitual das Políticas Educacionais</h2>
+            <div class="mindmap-container">
+                <div class="central-node">Políticas Educacionais Brasileiras</div>
+                <div class="branches">
+                    <div class="branch">
+                        <div class="node">Marcos Legais</div>
                         <div class="children">
-                            <div class="node">Diagnóstico</div>
-                            <div class="node">Metas</div>
+                            <div class="node">Constituição Federal</div>
+                            <div class="node">LDB (Lei 9.394/96)</div>
+                            <div class="node">PNE (2014-2024)</div>
                         </div>
                     </div>
-                    <div>
-                        <div class="node">Implementação</div>
+                    <div class="branch">
+                        <div class="node">Programas</div>
                         <div class="children">
-                            <div class="node">Programas</div>
-                            <div class="node">Ações</div>
+                            <div class="node">BNCC</div>
+                            <div class="node">FUNDEB</div>
+                            <div class="node">PDE</div>
                         </div>
                     </div>
-                    <div>
-                        <div class="node">Monitoramento</div>
+                    <div class="branch">
+                        <div class="node">Avaliação</div>
                         <div class="children">
-                            <div class="node">Indicadores</div>
-                            <div class="node">Avaliação</div>
+                            <div class="node">SAEB</div>
+                            <div class="node">IDEB</div>
+                            <div class="node">ENEM</div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="node">Revisão</div>
                     </div>
                 </div>
             </div>
+            <button id="toggle-mindmap" class="btn"><i class="fas fa-expand"></i> Ampliar Mapa</button>
+        </section>
+
+        <section id="politicas">
+            <h2><i class="fas fa-landmark"></i> Principais Políticas em Implementação</h2>
+            <div class="policy-cards">
+                <div class="card">
+                    <h3>BNCC</h3>
+                    <p>Base Nacional Comum Curricular (2017)</p>
+                    <div class="card-content">
+                        <p>Documento normativo que define aprendizagens essenciais para toda a Educação Básica.</p>
+                        <ul>
+                            <li><strong>Status:</strong> Em implementação</li>
+                            <li><strong>Âmbito:</strong> Nacional</li>
+                            <li><strong>Meta:</strong> Uniformização curricular</li>
+                        </ul>
+                    </div>
+                    <button class="btn-details">Detalhes</button>
+                </div>
+
+                <div class="card">
+                    <h3>FUNDEB</h3>
+                    <p>Fundo de Manutenção da Educação Básica</p>
+                    <div class="card-content">
+                        <p>Principal mecanismo de financiamento da educação básica pública.</p>
+                        <ul>
+                            <li><strong>Status:</strong> Permanente</li>
+                            <li><strong>Âmbito:</strong> Nacional</li>
+                            <li><strong>Meta:</strong> Universalização</li>
+                        </ul>
+                    </div>
+                    <button class="btn-details">Detalhes</button>
+                </div>
+
+                <div class="card">
+                    <h3>PDE</h3>
+                    <p>Plano de Desenvolvimento da Educação</p>
+                    <div class="card-content">
+                        <p>Conjunto de programas para melhoria da qualidade da educação (2007-2022).</p>
+                        <ul>
+                            <li><strong>Status:</strong> Em andamento</li>
+                            <li><strong>Âmbito:</strong> Nacional</li>
+                            <li><strong>Meta:</strong> IDEB 6.0</li>
+                        </ul>
+                    </div>
+                    <button class="btn-details">Detalhes</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="indicadores">
+            <h2><i class="fas fa-chart-line"></i> Indicadores Educacionais</h2>
+            <div class="chart-container">
+                <canvas id="ideb-chart"></canvas>
+            </div>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Indicador</th>
+                            <th>2015</th>
+                            <th>2017</th>
+                            <th>2019</th>
+                            <th>Meta 2024</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>IDEB - Anos Iniciais</td>
+                            <td>5.5</td>
+                            <td>5.8</td>
+                            <td>6.0</td>
+                            <td>6.0</td>
+                        </tr>
+                        <tr>
+                            <td>IDEB - Anos Finais</td>
+                            <td>4.5</td>
+                            <td>4.7</td>
+                            <td>4.9</td>
+                            <td>5.5</td>
+                        </tr>
+                        <tr>
+                            <td>IDEB - Ensino Médio</td>
+                            <td>3.7</td>
+                            <td>3.8</td>
+                            <td>4.2</td>
+                            <td>5.2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="desafios">
+            <h2><i class="fas fa-exclamation-triangle"></i> Principais Desafios</h2>
+            <div class="challenges-list">
+                <div class="challenge-item">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Universalização do Acesso</h3>
+                    <p>3,55 milhões de crianças e jovens de 4 a 17 anos fora da escola (dados de 2009)</p>
+                </div>
+                <div class="challenge-item">
+                    <i class="fas fa-book"></i>
+                    <h3>Qualidade do Aprendizado</h3>
+                    <p>39% dos estudantes terminam o fundamental com desempenho insatisfatório em matemática</p>
+                </div>
+                <div class="challenge-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Formação Docente</h3>
+                    <p>Necessidade de valorização e capacitação contínua dos professores</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Desenvolvido para análise de políticas educacionais | Fonte: FNDE - Formação pela Escola</p>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-file-pdf"></i> Documento Completo</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contato</a>
+            </div>
         </div>
+    </footer>
 
-        <!-- Tabela Comparativa -->
-        <h2>Tabela: Principais Políticas em Andamento</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Política</th>
-                    <th>Programa/Projeto</th>
-                    <th>Regulamentação</th>
-                    <th>Fonte de Financiamento</th>
-                    <th>Fase Atual</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>BNCC</td>
-                    <td>Currículos Estaduais</td>
-                    <td>Resolução CNE/CP nº 2/2017</td>
-                    <td>FNDE, Estados e Municípios</td>
-                    <td>Implementação</td>
-                </tr>
-                <tr>
-                    <td>Novo Ensino Médio</td>
-                    <td>Itinerários Formativos</td>
-                    <td>Lei nº 13.415/2017</td>
-                    <td>PDDE Interativo</td>
-                    <td>Monitoramento</td>
-                </tr>
-                <tr>
-                    <td>Fundeb</td>
-                    <td>Fundo de Manutenção</td>
-                    <td>Emenda Constitucional 108/2020</td>
-                    <td>Impostos Estaduais/Municipais + União</td>
-                    <td>Implementação</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Gráfico de Árvore -->
-        <h2>Fluxo: Como uma Política se Torna Ação</h2>
-        <div class="tree">
-            <ul>
-                <li>Regulamentação
-                    <ul>
-                        <li>Lei Federal
-                            <ul>
-                                <li>Decretos</li>
-                                <li>Portarias</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>Financiamento
-                    <ul>
-                        <li>Fontes Federais (FNDE)</li>
-                        <li>Contrapartidas Estaduais</li>
-                    </ul>
-                </li>
-                <li>Implementação
-                    <ul>
-                        <li>Formação de Professores</li>
-                        <li>Aquisição de Materiais</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <script>
-        // JavaScript para interações simples (opcional)
-        document.querySelectorAll('.node').forEach(node => {
-            node.addEventListener('click', () => {
-                node.style.backgroundColor = '#d6eaf8';
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
