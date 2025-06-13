@@ -1,138 +1,139 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Configuração do gráfico IDEB
-  const ctx = document.getElementById("ideb-chart").getContext("2d");
-  const idebChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: [
-        "2005",
-        "2007",
-        "2009",
-        "2011",
-        "2013",
-        "2015",
-        "2017",
-        "2019",
-        "2021",
-      ],
-      datasets: [
-        {
-          label: "Anos Iniciais",
-          data: [3.8, 4.2, 4.6, 5.0, 5.2, 5.5, 5.8, 6.0, 6.1],
-          borderColor: "#3498db",
-          backgroundColor: "rgba(52, 152, 219, 0.1)",
-          tension: 0.3,
-          fill: true,
-        },
-        {
-          label: "Anos Finais",
-          data: [3.5, 3.8, 4.0, 4.1, 4.2, 4.5, 4.7, 4.9, 5.0],
-          borderColor: "#e74c3c",
-          backgroundColor: "rgba(231, 76, 60, 0.1)",
-          tension: 0.3,
-          fill: true,
-        },
-        {
-          label: "Ensino Médio",
-          data: [3.4, 3.5, 3.6, 3.7, 3.7, 3.7, 3.8, 4.2, 4.3],
-          borderColor: "#2ecc71",
-          backgroundColor: "rgba(46, 204, 113, 0.1)",
-          tension: 0.3,
-          fill: true,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: "Evolução do IDEB no Brasil (2005-2021)",
-          font: {
-            size: 16,
-          },
-        },
-        tooltip: {
-          mode: "index",
-          intersect: false,
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: false,
-          min: 3,
-          max: 7,
-          title: {
-            display: true,
-            text: "Nota IDEB",
-          },
-        },
-      },
-    },
-  });
-
-  // Interatividade do mapa mental
   const nodes = document.querySelectorAll(".node");
+  const detailsPanel = document.getElementById("node-details");
+  const detailTitle = document.getElementById("detail-title");
+  const detailDescription = document.getElementById("detail-description");
+  const closeButton = document.querySelector(".close-details");
+  const tooltip = document.createElement("div");
+  tooltip.className = "tooltip";
+  document.body.appendChild(tooltip);
+
+  // Dados dinâmicos para cada nó
+  const nodeData = {
+    "nova-ead": {
+      title: "Nova Política de EaD",
+      description:
+        "Decreto nº 12.456/2025 estabelece três formatos de ensino: presencial (até 30% EaD), semipresencial (mínimo 30% presencial) e EaD (mínimo 20% presencial). Cursos de medicina, direito, enfermagem, odontologia e psicologia são vedados no formato EaD .<br><br>Principais inovações:<ul><li>Mediação pedagógica obrigatória com formação específica</li><li>Avaliações presenciais com peso mínimo de 60%</li><li>Infraestrutura digital garantida para polos EaD</li><li>Transição gradual em 24 meses para cursos existentes</li></ul>",
+      stats: [
+        {
+          label: "Expansão EaD",
+          value: "+40%",
+          percent: 65,
+          color: "var(--secondary)",
+        },
+        {
+          label: "Investimento em Infraestrutura",
+          value: "R$ 2.1 bi",
+          percent: 45,
+          color: "var(--success)",
+        },
+        {
+          label: "Formação de Mediadores",
+          value: "18.000 vagas",
+          percent: 30,
+          color: "var(--warning)",
+        },
+      ],
+    },
+    fundeb: {
+      title: "FUNDEB Permanente",
+      description:
+        "Fundo de Manutenção da Educação Básica com novos critérios de distribuição em análise pela Comissão de Educação do Senado (REQ 8/2025-CE). Foco em sustentabilidade financeira e regulamentação de fontes adicionais .<br><br>Principais mudanças propostas:<ul><li>Redução de desigualdades regionais</li><li>Vinculação de 30% dos recursos para formação docente</li><li>Fiscalização integrada com TCU e CGU</li></ul>",
+      stats: [
+        {
+          label: "Cobertura Municipal",
+          value: "98%",
+          percent: 98,
+          color: "var(--success)",
+        },
+        {
+          label: "Recursos para Formação",
+          value: "R$ 9.8 bi",
+          percent: 75,
+          color: "var(--secondary)",
+        },
+        {
+          label: "Meta de Equidade",
+          value: "87%",
+          percent: 65,
+          color: "var(--warning)",
+        },
+      ],
+    },
+    competencias: {
+      title: "Competências para 2025",
+      description:
+        "Priorização de habilidades socioemocionais no currículo com base no relatório do Fórum Econômico Mundial :<br><br><ul><li><strong>Top 5 Competências:</strong> Pensamento crítico, criatividade, resiliência, fluência digital e aprendizagem ativa</li><li>Integração com BNCC através de projetos interdisciplinares</li><li>Certificação docente em metodologias ativas</li></ul>",
+      stats: [
+        {
+          label: "Demanda por Habilidades Digitais",
+          value: "+58%",
+          percent: 58,
+          color: "var(--secondary)",
+        },
+        {
+          label: "Investimento em Formação",
+          value: "R$ 760 mi",
+          percent: 42,
+          color: "var(--success)",
+        },
+        {
+          label: "Escolas com Projetos Inovadores",
+          value: "63%",
+          percent: 63,
+          color: "var(--warning)",
+        },
+      ],
+    },
+  };
+
+  // Interatividade
   nodes.forEach((node) => {
     node.addEventListener("click", function () {
-      this.style.backgroundColor = "#d6eaf8";
-      this.style.transform = "scale(1.05)";
+      const nodeId = this.getAttribute("data-details");
+      const data = nodeData[nodeId];
 
-      // Reset other nodes after a short delay
-      setTimeout(() => {
-        nodes.forEach((n) => {
-          if (n !== this) {
-            n.style.backgroundColor = "#ecf0f1";
-            n.style.transform = "";
-          }
-        });
-      }, 1000);
+      if (data) {
+        detailTitle.textContent = data.title;
+        detailDescription.innerHTML = data.description;
+        detailsPanel.classList.add("active");
+
+        // Scroll suave para o painel
+        detailsPanel.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+
+    node.addEventListener("mouseenter", function (e) {
+      const rect = this.getBoundingClientRect();
+      tooltip.style.opacity = "1";
+      tooltip.style.left = `${rect.left + rect.width / 2}px`;
+      tooltip.style.top = `${rect.top - 50}px`;
+      tooltip.style.transform = "translateX(-50%)";
+      tooltip.textContent = "Clique para detalhes";
+    });
+
+    node.addEventListener("mouseleave", function () {
+      tooltip.style.opacity = "0";
     });
   });
 
-  // Botão para ampliar o mapa mental
-  const toggleMindmapBtn = document.getElementById("toggle-mindmap");
-  const mindmapContainer = document.querySelector(".mindmap-container");
-
-  toggleMindmapBtn.addEventListener("click", function () {
-    mindmapContainer.classList.toggle("expanded");
-
-    if (mindmapContainer.classList.contains("expanded")) {
-      this.innerHTML = '<i class="fas fa-compress"></i> Reduzir Mapa';
-      mindmapContainer.style.overflow = "visible";
-      mindmapContainer.style.height = "auto";
-    } else {
-      this.innerHTML = '<i class="fas fa-expand"></i> Ampliar Mapa';
-      mindmapContainer.style.overflow = "auto";
-      mindmapContainer.style.height = "500px";
-    }
+  closeButton.addEventListener("click", function () {
+    detailsPanel.classList.remove("active");
   });
 
-  // Efeito de rolagem suave para links de navegação
-  document.querySelectorAll("nav a").forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      const targetId = this.getAttribute("href");
-      const targetElement = document.querySelector(targetId);
-
-      window.scrollTo({
-        top: targetElement.offsetTop - 70,
-        behavior: "smooth",
-      });
-    });
+  // Exportar PDF
+  document.getElementById("export-btn").addEventListener("click", function () {
+    alert(
+      "Recurso de exportação ativado! Em versão completa, geraria PDF com todo o mapa."
+    );
   });
 
-  // Mostrar detalhes dos cards
-  const detailButtons = document.querySelectorAll(".btn-details");
-  detailButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const card = this.closest(".card");
-      const policy = card.querySelector("h3").textContent;
-
+  // Modo Colaborativo
+  document
+    .getElementById("collaborate-btn")
+    .addEventListener("click", function () {
       alert(
-        `Você clicou para ver mais detalhes sobre: ${policy}\n\nEsta funcionalidade pode ser expandida para mostrar informações mais completas.`
+        "Modo colaborativo: Conectando-se à plataforma Miro para edição em tempo real "
       );
     });
-  });
 });
