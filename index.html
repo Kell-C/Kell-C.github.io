@@ -3,41 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recursos Históricos | Professora Kelly C. Silva</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Fonte do Google (opcional) -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <title>Políticas Educacionais no Brasil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* Estilo da Tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        /* Mapa Mental (simulado com divs) */
+        .mindmap {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .node {
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+            text-align: center;
+            width: 150px;
+        }
+        .children {
+            display: flex;
+            justify-content: center;
+        }
+        /* Gráfico de Árvore (simplificado) */
+        .tree {
+            margin: 20px 0;
+        }
+        .tree ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        .tree li {
+            margin: 10px 0;
+            position: relative;
+        }
+        .tree li::before {
+            content: "";
+            position: absolute;
+            left: -15px;
+            top: 10px;
+            border-left: 1px solid #ccc;
+            height: 100%;
+        }
+        .tree li::after {
+            content: "";
+            position: absolute;
+            left: -15px;
+            top: 10px;
+            border-top: 1px solid #ccc;
+            width: 15px;
+        }
+        .tree li:last-child::before {
+            height: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Recursos Históricos</h1>
-        <p>Portal de materiais didáticos para aulas de História</p>
-    </header>
+    <div class="container">
+        <h1>Políticas Educacionais no Brasil</h1>
+        <p>Análise de implementação, regulamentação e financiamento.</p>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="recursos.html">Recursos</a></li>
-            <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="mapas-mentais.html">Mapas Mentais</a></li>
-        </ul>
-    </nav>
+        <!-- Mapa Mental Simplificado -->
+        <h2>Mapa Mental: Ciclo das Políticas Educacionais</h2>
+        <div class="mindmap">
+            <div>
+                <div class="node">Política Nacional</div>
+                <div class="children">
+                    <div>
+                        <div class="node">Planejamento</div>
+                        <div class="children">
+                            <div class="node">Diagnóstico</div>
+                            <div class="node">Metas</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="node">Implementação</div>
+                        <div class="children">
+                            <div class="node">Programas</div>
+                            <div class="node">Ações</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="node">Monitoramento</div>
+                        <div class="children">
+                            <div class="node">Indicadores</div>
+                            <div class="node">Avaliação</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="node">Revisão</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <main>
-        <section class="destaque">
-            <h2>Bem-vindo(a)!</h2>
-            <p>Este site reúne materiais cuidadosamente selecionados para apoiar o ensino e aprendizagem de História. Use os menus acima para navegar.</p>
-            <img src="img/livro-antigo.jpg" alt="Livro antigo aberto" width="300">
-        </section>
+        <!-- Tabela Comparativa -->
+        <h2>Tabela: Principais Políticas em Andamento</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Política</th>
+                    <th>Programa/Projeto</th>
+                    <th>Regulamentação</th>
+                    <th>Fonte de Financiamento</th>
+                    <th>Fase Atual</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BNCC</td>
+                    <td>Currículos Estaduais</td>
+                    <td>Resolução CNE/CP nº 2/2017</td>
+                    <td>FNDE, Estados e Municípios</td>
+                    <td>Implementação</td>
+                </tr>
+                <tr>
+                    <td>Novo Ensino Médio</td>
+                    <td>Itinerários Formativos</td>
+                    <td>Lei nº 13.415/2017</td>
+                    <td>PDDE Interativo</td>
+                    <td>Monitoramento</td>
+                </tr>
+                <tr>
+                    <td>Fundeb</td>
+                    <td>Fundo de Manutenção</td>
+                    <td>Emenda Constitucional 108/2020</td>
+                    <td>Impostos Estaduais/Municipais + União</td>
+                    <td>Implementação</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <section class="cta">
-            <h3>Comece por aqui:</h3>
-            <a href="recursos.html" class="botao">Explorar Recursos</a>
-        </section>
-    </main>
+        <!-- Gráfico de Árvore -->
+        <h2>Fluxo: Como uma Política se Torna Ação</h2>
+        <div class="tree">
+            <ul>
+                <li>Regulamentação
+                    <ul>
+                        <li>Lei Federal
+                            <ul>
+                                <li>Decretos</li>
+                                <li>Portarias</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Financiamento
+                    <ul>
+                        <li>Fontes Federais (FNDE)</li>
+                        <li>Contrapartidas Estaduais</li>
+                    </ul>
+                </li>
+                <li>Implementação
+                    <ul>
+                        <li>Formação de Professores</li>
+                        <li>Aquisição de Materiais</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <footer>
-        <p>© 2024 Professora Kelly Cristhiane Silva. Todos os direitos reservados.</p>
-    </footer>
+    <script>
+        // JavaScript para interações simples (opcional)
+        document.querySelectorAll('.node').forEach(node => {
+            node.addEventListener('click', () => {
+                node.style.backgroundColor = '#d6eaf8';
+            });
+        });
+    </script>
 </body>
 </html>
