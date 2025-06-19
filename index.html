@@ -167,14 +167,20 @@
             </div>
         </section>
     </div>
-
     <script>
         // Corrige o erro dos ícones do Leaflet
-L.Icon.Default.mergeOptions({
-    iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png'
-});
+        L.Icon.Default.mergeOptions({
+            iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+            iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png'
+        });
+    
+        function initMap() {
+            // ... (restante do código do mapa)
+        }
+        window.onload = initMap;
+    </script>
+    <script>
         // Mapa Interativo (usando Leaflet.js)
         function initMap() {
             const map = L.map('map').setView([-15, -55], 4);
