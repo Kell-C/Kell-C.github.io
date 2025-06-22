@@ -3,218 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula Interativa: História do Brasil</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        header {
-            background: #2E7D32;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #2E7D32;
-        }
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: #2E7D32;
-        }
-        .event {
-            padding: 10px 30px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        .event:nth-child(odd) {
-            left: 0;
-        }
-        .event:nth-child(even) {
-            left: 50%;
-        }
-        .event::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #2E7D32;
-            border-radius: 50%;
-            top: 20px;
-            right: -10px;
-        }
-        .event:nth-child(even)::after {
-            left: -10px;
-        }
-        #map {
-            height: 400px;
-            margin: 20px 0;
-            border: 1px solid #ddd;
-        }
-        .quiz-question {
-            margin: 15px 0;
-            padding: 10px;
-            background: #E8F5E9;
-            border-left: 4px solid #2E7D32;
-        }
-        button {
-            background: #2E7D32;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            margin: 5px 0;
-        }
-        button:hover {
-            background: #1B5E20;
-        }
-        .hidden {
-            display: none;
-        }
-        .fun-fact {
-            background: #E3F2FD;
-            padding: 10px;
-            margin: 10px 0;
-            border-left: 4px solid #1565C0;
-        }
-    </style>
+    <title>ExistentialOS - Onboarding</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>História do Brasil Interativa</h1>
-        <p>Explore os principais eventos, mapas e curiosidades do Brasil Colonial ao Século XXI!</p>
-    </header>
-
     <div class="container">
-        <section id="intro">
-            <h2>Introdução</h2>
-            <p>O Brasil tem uma história rica e complexa, desde os povos indígenas até os dias atuais. Nesta aula, você vai explorar os momentos mais importantes de forma interativa!</p>
-        </section>
+        <!-- Tela 1: Escolha de Identidade -->
+        <div id="identity-screen" class="screen active">
+            <div class="lua-avatar" id="lua-avatar">🌌</div>
+            <h1>Hoje você é…?</h1>
+            
+            <div class="identity-options">
+                <button data-identity="excel" class="identity-btn">
+                    <span>🧮</span> Deus do Excel
+                </button>
+                
+                <button data-identity="artist" class="identity-btn">
+                    <span>🎨</span> Artista bloqueado
+                </button>
+                
+                <button data-identity="philosopher" class="identity-btn">
+                    <span>🚌</span> Filósofo de busão
+                </button>
+            </div>
+        </div>
 
-        <section id="timeline">
-            <h2>Linha do Tempo</h2>
-            <div class="timeline">
-                <div class="event">
-                    <h3>1500: Chegada dos Portugueses</h3>
-                    <p>Pedro Álvares Cabral desembarca no Brasil em 22 de abril.</p>
-                </div>
-                <div class="event">
-                    <h3>1822: Independência</h3>
-                    <p>Dom Pedro I proclama a independência em 7 de setembro.</p>
-                </div>
-                <div class="event">
-                    <h3>1888: Abolição da Escravidão</h3>
-                    <p>Lei Áurea é assinada pela Princesa Isabel.</p>
-                </div>
-                <div class="event">
-                    <h3>1889: Proclamação da República</h3>
-                    <p>Fim do Império e início da República.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="map-section">
-            <h2>Mapa Histórico</h2>
-            <div id="map"></div>
-            <p>Clique nos marcadores para ver detalhes!</p>
-        </section>
-
-        <section id="quiz">
-            <h2>Quiz: O Quê Você Sabe?</h2>
-            <div class="quiz-question">
-                <p>1. Quem foi o primeiro governante do Brasil após a Independência?</p>
-                <button onclick="checkAnswer(1, 'Dom Pedro I')">Dom Pedro I</button>
-                <button onclick="checkAnswer(1, 'Dom Pedro II')">Dom Pedro II</button>
-                <p id="feedback1" class="hidden"></p>
-            </div>
-            <div class="quiz-question">
-                <p>2. Qual foi o principal produto econômico do Brasil Colonial?</p>
-                <button onclick="checkAnswer(2, 'Açúcar')">Açúcar</button>
-                <button onclick="checkAnswer(2, 'Café')">Café</button>
-                <p id="feedback2" class="hidden"></p>
-            </div>
-        </section>
-
-        <section id="fun-facts">
-            <h2>Sabia Que?</h2>
-            <div class="fun-fact">
-                <p>O nome "Brasil" vem da árvore "pau-brasil", explorada no século XVI.</p>
-            </div>
-            <div class="fun-fact">
-                <p>O Rio de Janeiro foi capital de Portugal de 1808 a 1821, durante as Guerras Napoleônicas.</p>
-            </div>
-        </section>
+        <!-- Tela 2: Mensagem da Lua -->
+        <div id="message-screen" class="screen">
+            <div class="lua-avatar" id="active-lua-avatar">🌙</div>
+            <p id="lua-message"></p>
+            <button id="continue-btn">Continuar Jornada</button>
+        </div>
     </div>
-    <script>
-        // Corrige o erro dos ícones do Leaflet
-        L.Icon.Default.mergeOptions({
-            iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-            iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-            shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png'
-        });
-    
-        function initMap() {
-            // ... (restante do código do mapa)
-        }
-        window.onload = initMap;
-    </script>
-    <script>
-        // Mapa Interativo (usando Leaflet.js)
-        function initMap() {
-            const map = L.map('map').setView([-15, -55], 4);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-            
-            // Marcadores históricos
-            L.marker([-15.793, -47.882]).addTo(map)
-                .bindPopup("<b>Brasília</b><br>Capital do Brasil desde 1960.");
-            
-            L.marker([-23.550, -46.633]).addTo(map)
-                .bindPopup("<b>São Paulo</b><br>Maior cidade do país, fundada em 1554.");
-        }
 
-        // Inicializa o mapa quando a página carregar
-        window.onload = initMap;
-
-        // Quiz Interativo
-        function checkAnswer(questionId, correctAnswer) {
-            const feedback = document.getElementById(`feedback${questionId}`);
-            const buttons = document.querySelectorAll(`.quiz-question:nth-child(${questionId}) button`);
-            
-            buttons.forEach(button => {
-                if (button.textContent === correctAnswer) {
-                    button.style.background = '#4CAF50'; // Verde se correto
-                } else {
-                    button.style.background = '#F44336'; // Vermelho se errado
-                }
-                button.disabled = true;
-            });
-            
-            feedback.textContent = `Resposta correta: ${correctAnswer}`;
-            feedback.classList.remove('hidden');
-        }
-    </script>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
