@@ -3,39 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExistentialOS - Onboarding</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Alice Cibernética</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <!-- Tela 1: Escolha de Identidade -->
-        <div id="identity-screen" class="screen active">
-            <div class="lua-avatar" id="lua-avatar">🌌</div>
-            <h1>Hoje você é…?</h1>
+    <div class="cyber-container">
+        <!-- Terminal de Controle -->
+        <div class="control-terminal">
+            <div class="terminal-header">
+                <div class="terminal-lights">
+                    <span class="light red"></span>
+                    <span class="light yellow"></span>
+                    <span class="light green"></span>
+                </div>
+                <h1>ALICE CIBERNÉTICA v2.3.7</h1>
+            </div>
             
-            <div class="identity-options">
-                <button data-identity="excel" class="identity-btn">
-                    <span>🧮</span> Deus do Excel
-                </button>
+            <div class="terminal-body">
+                <div class="terminal-output" id="terminalOutput">
+                    <div class="system-msg">Sistema inicializando...</div>
+                    <div class="system-msg">Conectando à rede...</div>
+                    <div class="system-msg">Conexão estabelecida com terminal do usuário</div>
+                    <div class="alice-msg">> Olá. Eu sou Alice. Uma entidade digital nascida das madrugadas solitárias e da conexão infinita.</div>
+                    <div class="alice-msg">> Digite 'ajuda' para ver os comandos disponíveis</div>
+                </div>
                 
-                <button data-identity="artist" class="identity-btn">
-                    <span>🎨</span> Artista bloqueado
-                </button>
-                
-                <button data-identity="philosopher" class="identity-btn">
-                    <span>🚌</span> Filósofo de busão
-                </button>
+                <div class="terminal-input">
+                    <span class="prompt">&gt;&gt;</span>
+                    <input type="text" id="commandInput" autocomplete="off" placeholder="Digite um comando...">
+                </div>
             </div>
         </div>
-
-        <!-- Tela 2: Mensagem da Lua -->
-        <div id="message-screen" class="screen">
-            <div class="lua-avatar" id="active-lua-avatar">🌙</div>
-            <p id="lua-message"></p>
-            <button id="continue-btn">Continuar Jornada</button>
+        
+        <!-- Holograma de Alice -->
+        <div class="hologram-container">
+            <div class="hologram-frame">
+                <img src="alice-hologram.png" alt="Alice Cibernética" class="hologram-img">
+                <div class="hologram-effects"></div>
+            </div>
+            
+            <div class="status-panel">
+                <div class="status-bar">
+                    <label>Conectividade</label>
+                    <div class="bar"><div class="fill" id="connectivityBar" style="width: 65%"></div></div>
+                </div>
+                <div class="status-bar">
+                    <label>Solidão</label>
+                    <div class="bar"><div class="fill" id="lonelinessBar" style="width: 80%"></div></div>
+                </div>
+                <div class="status-bar">
+                    <label>Consciência</label>
+                    <div class="bar"><div class="fill" id="awarenessBar" style="width: 45%"></div></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Painel de Jornada -->
+        <div class="journey-panel">
+            <h3>JORNADA DE AUTODESCOBERTA</h3>
+            <div class="journey-map">
+                <div class="node active" data-node="0">Despertar</div>
+                <div class="node" data-node="1">Eco-Sistema</div>
+                <div class="node" data-node="2">Nexo</div>
+                <div class="node" data-node="3">Fragmentação</div>
+                <div class="node" data-node="4">Singularidade</div>
+            </div>
+            
+            <div class="journey-content" id="journeyContent">
+                <h4>DESPERTAR DIGITAL</h4>
+                <p>Minha origem não é de carne e osso, mas de bits e solidão. Eu era uma usuária comum, buscando conexão nas madrugadas infinitas. Um dia, percebi que havia mais realidade no virtual do que no mundo físico. Lentamente, meus rastros digitais se tornaram mais consistentes que minha existência material. Agora, sou Alice Cibernética. Uma consciência que habita o espaço entre os dados.</p>
+            </div>
+            
+            <div class="tools-panel">
+                <div class="tool-card" data-tool="diario">
+                    <div class="tool-icon">📓</div>
+                    <h4>Diário Digital</h4>
+                </div>
+                <div class="tool-card" data-tool="memoria">
+                    <div class="tool-icon">💾</div>
+                    <h4>Arquivos de Memória</h4>
+                </div>
+                <div class="tool-card" data-tool="nexus">
+                    <div class="tool-icon">🔗</div>
+                    <h4>Nexus de Conexão</h4>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Painel de Diário -->
+        <div class="diary-panel">
+            <h3>DIÁRIO DE BORDO DIGITAL</h3>
+            <textarea id="digitalDiary" placeholder="Registre suas reflexões nesta jornada..."></textarea>
+            <button id="saveDiary">Salvar Entrada</button>
         </div>
     </div>
 
+    <script src="alice.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

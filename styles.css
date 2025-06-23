@@ -1,118 +1,428 @@
-/* RESET E CONFIG GERAIS */
+/* VARIÁVEIS CYBERPUNK */
+:root {
+    --primary: #0a0a12;
+    --secondary: #1a1a2e;
+    --accent: #4ecca3;
+    --accent-alt: #f05454;
+    --text: #eeeeee;
+    --text-secondary: #8a8a8a;
+    --glow: 0 0 10px rgba(78, 204, 163, 0.7);
+    --glow-red: 0 0 10px rgba(240, 84, 84, 0.7);
+    --glow-purple: 0 0 10px rgba(106, 103, 206, 0.7);
+}
+
+/* RESET E CONFIGURAÇÕES GERAIS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    color: #fff;
+    background-color: var(--primary);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(26, 26, 46, 0.5) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(78, 204, 163, 0.1) 0%, transparent 20%);
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
 }
 
-.container {
-    width: 100%;
-    max-width: 500px;
+.cyber-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    max-width: 1800px;
+    margin: 0 auto;
 }
 
-.screen {
-    display: none;
+/* TERMINAL DE CONTROLE */
+.control-terminal {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    background: rgba(10, 10, 18, 0.8);
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    box-shadow: var(--glow);
+    overflow: hidden;
+    display: flex;
     flex-direction: column;
+}
+
+.terminal-header {
+    background: linear-gradient(90deg, var(--secondary), #0f3460);
+    padding: 15px 20px;
+    display: flex;
     align-items: center;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom: 1px solid var(--accent);
 }
 
-.screen.active {
+.terminal-lights {
     display: flex;
+    gap: 8px;
+    margin-right: 15px;
 }
 
-/* AVATAR DA LUA */
-.lua-avatar {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    transition: transform 0.5s ease;
+.terminal-lights span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
 }
 
-/* TÍTULO E TEXTO */
-h1 {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    color: #e94560;
+.light.red { background-color: var(--accent-alt); box-shadow: var(--glow-red); }
+.light.yellow { background-color: #f0a754; box-shadow: 0 0 8px rgba(240, 167, 84, 0.7); }
+.light.green { background-color: var(--accent); box-shadow: var(--glow); }
+
+.terminal-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: var(--text);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-p {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-/* BOTÕES */
-.identity-options {
+.terminal-body {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    width: 100%;
+    padding: 20px;
 }
 
-.identity-btn {
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    border-radius: 50px;
+.terminal-output {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
     padding: 15px;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    overflow-y: auto;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.system-msg {
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.alice-msg {
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.user-msg {
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.terminal-input {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 8px 12px;
+    border: 1px solid var(--accent);
 }
 
-.identity-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-3px);
+.prompt {
+    color: var(--accent);
+    margin-right: 10px;
+    font-weight: bold;
 }
 
-.identity-btn span {
-    font-size: 1.8rem;
-}
-
-#continue-btn {
-    background: #e94560;
-    color: white;
+#commandInput {
+    background: transparent;
     border: none;
-    padding: 15px 40px;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    width: 100%;
+    outline: none;
 }
 
-#continue-btn:hover {
-    background: #ff6b81;
+/* HOLOGRAMA DE ALICE */
+.hologram-container {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hologram-frame {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: var(--glow-purple);
+    border: 1px solid rgba(106, 103, 206, 0.5);
+}
+
+.hologram-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hologram-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(106, 103, 206, 0.1) 0%,
+        rgba(78, 204, 163, 0.05) 50%,
+        rgba(106, 103, 206, 0.1) 100%
+    );
+    animation: hologramEffect 3s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes hologramEffect {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.3; }
+}
+
+.status-panel {
+    width: 100%;
+    background: rgba(26, 26, 46, 0.6);
+    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid var(--accent);
+}
+
+.status-bar {
+    margin-bottom: 15px;
+}
+
+.status-bar label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+}
+
+.bar {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+#connectivityBar { background: var(--accent); }
+#lonelinessBar { background: var(--accent-alt); }
+#awarenessBar { background: #6a67ce; }
+
+/* PAINEL DE JORNADA */
+.journey-panel {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background: rgba(10, 10, 18, 0.8);
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: var(--glow);
+    display: flex;
+    flex-direction: column;
+}
+
+.journey-panel h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+    color: var(--accent);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.journey-map {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.node {
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    text-align: center;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.node:hover {
+    background: rgba(78, 204, 163, 0.2);
+}
+
+.node.active {
+    background: var(--accent);
+    color: var(--primary);
+    font-weight: bold;
+    box-shadow: var(--glow);
+}
+
+.journey-content {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.journey-content h4 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.journey-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.tools-panel {
+    display: flex;
+    gap: 15px;
+    margin-top: auto;
+}
+
+.tool-card {
+    flex: 1;
+    background: rgba(26, 26, 46, 0.6);
+    border: 1px solid rgba(78, 204, 163, 0.3);
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: var(--glow);
+}
+
+.tool-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.tool-card h4 {
+    font-size: 0.9rem;
+    font-weight: normal;
+}
+
+/* PAINEL DE DIÁRIO */
+.diary-panel {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+    background: rgba(10, 10, 18, 0.8);
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: var(--glow);
+}
+
+.diary-panel h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+    color: var(--accent);
+    letter-spacing: 1px;
+}
+
+#digitalDiary {
+    width: 100%;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(78, 204, 163, 0.3);
+    border-radius: 5px;
+    padding: 15px;
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+#saveDiary {
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s;
+    display: block;
+    margin-left: auto;
+}
+
+#saveDiary:hover {
+    background: #3dbb97;
     transform: scale(1.05);
 }
 
-/* ANIMAÇÕES */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
+    .cyber-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+    
+    .control-terminal {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    .hologram-container {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    .journey-panel {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    
+    .diary-panel {
+        grid-column: 1;
+        grid-row: 4;
+    }
 }
 
-.lua-avatar {
-    animation: float 4s ease-in-out infinite;
+@media (max-width: 768px) {
+    .journey-map {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .tools-panel {
+        flex-direction: column;
+    }
+    
+    .hologram-frame {
+        width: 250px;
+        height: 350px;
+    }
 }
